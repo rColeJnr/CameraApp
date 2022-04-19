@@ -3,23 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_dashboard">
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.rick.cameraapp.ui.home.HomeFragment"
+        android:name="com.rick.cameraapp.ui.gallery.GalleryFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.rick.cameraapp.ui.dashboard.DashboardFragment"
+        android:name="com.rick.cameraapp.ui.camera.CameraFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_camera" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.rick.cameraapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-</navigation>
+ </navigation>
