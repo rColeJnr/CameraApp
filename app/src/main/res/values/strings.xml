@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CameraApp</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="title_camera">Camera</string>
     <string name="capture_photo">Capture a photo</string>
     <string name="delete_dialog_title">Delete?</string>
     <string name="delete_dialog_message">Delete %1$s?</string>
