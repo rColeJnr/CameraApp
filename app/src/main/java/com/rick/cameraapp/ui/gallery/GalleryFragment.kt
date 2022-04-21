@@ -43,8 +43,8 @@ class GalleryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         galleryAdapter = GalleryAdapter(activity as MainActivity, this)
-        binding.root.apply { GridLayoutManager(context, 3); adapter = galleryAdapter }
-
+        binding.root.layoutManager = GridLayoutManager(context, 3)
+        binding.root.adapter = galleryAdapter
         viewModel = ViewModelProvider(this)[GalleryViewModel::class.java]
         viewModel.apply {
             photos.observe(viewLifecycleOwner) { photos ->
@@ -52,10 +52,12 @@ class GalleryFragment : Fragment() {
                     galleryAdapter.notifyItemRangeRemoved(
                         0,
                         galleryAdapter.itemCount
-                    ); galleryAdapter.photos = it; galleryAdapter.notifyItemRangeInserted(
-                    0,
-                    it.size
-                )
+                    )
+                    galleryAdapter.photos = it
+                    galleryAdapter.notifyItemRangeInserted(
+                        0,
+                        it.size
+                    )
                 }
             }
             if (CameraPermissionHelper.hasStoragePermission(requireActivity())) loadPhotos()
@@ -78,7 +80,6 @@ class GalleryFragment : Fragment() {
                     viewModel.photoToDelete = photo
                     deletePhoto()
                 }
-
             }
             true
         }
@@ -106,7 +107,7 @@ whether they wish to modify (or delete) the image fil*/
     /*The IntentSenderRequest object will be initiated and monitored by an activity request launcher.*/
     private val registerResult =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result: ActivityResult ->
-            // Result code of 0 means the user declined permissio to delete the photo
+            // Result code of 0 means the user declined permission to delete the photo
             if (result.resultCode != 0) deletePhoto()
         }
 }

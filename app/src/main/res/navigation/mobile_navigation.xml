@@ -9,7 +9,15 @@
         android:id="@+id/navigation_gallery"
         android:name="com.rick.cameraapp.ui.gallery.GalleryFragment"
         android:label="@string/title_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery">
+        <action
+            android:id="@+id/action_navigation_gallery_to_photoFilterFragment"
+            app:destination="@id/photoFilterFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_exit_anim"
+            app:popExitAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_camera"
@@ -17,4 +25,18 @@
         android:label="@string/title_camera"
         tools:layout="@layout/fragment_camera" />
 
- </navigation>
+    <fragment
+        android:id="@+id/photoFilterFragment"
+        android:name="com.rick.cameraapp.ui.gallery.PhotoFilterFragment"
+        android:label="fragment_photo_filter"
+        tools:layout="@layout/fragment_photo_filter">
+
+        <argument
+            android:name="photo"
+            android:defaultValue="@null"
+            app:argType="com.rick.cameraapp.Photo"
+            app:nullable="true" />
+
+    </fragment>
+
+</navigation>
