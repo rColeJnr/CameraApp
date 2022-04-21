@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 
 class GalleryViewModel(application: Application) : AndroidViewModel(application) {
 
+    var photoToDelete: Photo? = null
     private val appContext: Application = application
     private var contentObserver: ContentObserver
     val photos = MutableLiveData<List<Photo>>()
