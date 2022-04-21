@@ -1,10 +1,14 @@
 package com.rick.cameraapp
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.rick.cameraapp.databinding.ActivityMainBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,6 +43,18 @@ class MainActivity : AppCompatActivity() {
         } else recreate() /*If the hasCameraPermission
 and hasStoragePermission methods both return values of true, then the recreate method will reload the activity
 because the necessary user permissions have been granted.*/
+    }
+
+    fun prepareContentValues(): ContentValues {
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val imageFileName = "image_$timeStamp"
+
+        return ContentValues().apply {
+            put(MediaStore.MediaColumns.DISPLAY_NAME, imageFileName)
+            put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
+            put(MediaStore.MediaColumns.RELATIVE_PATH, "Pictures")
+            put(MediaStore.MediaColumns.AUTHOR, "rColeJnr")
+        }
     }
 }
 
